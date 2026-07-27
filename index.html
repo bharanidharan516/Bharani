@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct UPI Payment</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            background-color: #f4f4f9; 
+            margin: 0; 
+        }
+        .pay-card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            text-align: center; 
+            width: 300px; 
+        }
+        .pay-btn { 
+            width: 100%; 
+            padding: 14px; 
+            background-color: #28a745; 
+            color: white; 
+            border: none; 
+            border-radius: 6px; 
+            font-size: 16px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            margin-top: 15px;
+        }
+        .pay-btn:hover { 
+            background-color: #218838; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="pay-card">
+    <h2>Pay via UPI App</h2>
+    <p>Click below to open GPay, PhonePe, or Paytm and complete the payment.</p>
+    
+    <!-- Payment Button -->
+    <button class="pay-btn" onclick="makePayment()">Open UPI App to Pay</button>
+</div>
+
+<script>
+function makePayment() {
+    // 1. Your UPI ID is added here
+    var upiId = "9787551076@upi"; 
+    
+    // 2. Enter your Name or Store Name here
+    var name = "My Store"; 
+
+    // Simple UPI Deep Link without amount
+    var upiUrl = "upi://pay?pa=" + encodeURIComponent(upiId) + 
+                 "&pn=" + encodeURIComponent(name) + 
+                 "&cu=INR";
+
+    // Open UPI apps
+    window.location.href = upiUrl;
+}
+</script>
+
+</body>
+</html>
